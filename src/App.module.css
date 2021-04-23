@@ -4,3 +4,8 @@
   flex-direction: column;
   margin: auto;
 }
+
+.title {
+  margin: 5px;
+  line-height: 28px;
+}
