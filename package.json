@@ -1,5 +1,5 @@
 {
-  "name": "new-react-repo-template",
+  "name": "goit-react-hw-06-phonebook",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -56,17 +56,17 @@
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1"
   },
-  "description": "new-react-repo-template",
+  "description": "Домашнее задание №6",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zamesow/new-react-repo-template.git"
+    "url": "git+https://github.com/zamesow/goit-react-hw-06-phonebook.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zamesow/new-react-repo-template/issues"
+    "url": "https://github.com/zamesow/goit-react-hw-06-phonebook/issues"
   },
-  "homepage": "https://zamesow.github.io/new-react-repo-template/"
+  "homepage": "https://zamesow.github.io/goit-react-hw-06-phonebook/"
 }
