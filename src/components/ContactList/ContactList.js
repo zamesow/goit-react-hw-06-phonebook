@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import contactActions from '../../redux/contact/contact-actions';
 import mc from './ContactList.module.css';
 
 function ContactList({ contacts, onDelete, children }) {
@@ -28,8 +30,41 @@ function ContactList({ contacts, onDelete, children }) {
 
 ContactList.propTypes = {
   contacts: PropTypes.array.isRequired,
-  onDelete: PropTypes.array.isRequired,
+  // onDelete: PropTypes.array.isRequired,
   children: PropTypes.element.isRequired,
 };
 
-export default ContactList;
+const getVisibleContacts = (contacts, filter) => {
+  const normalizedFilter = filter.toLowerCase();
+
+  return contacts.filter(
+    ({ name, number }) =>
+      name.toLowerCase().includes(normalizedFilter) || number.includes(filter),
+  );
+};
+
+const mapStateToProps = ({ contacts, filter }) => ({
+  contacts: getVisibleContacts(contacts, filter),
+});
+
+const mapDispatchToProps = dispatch => ({
+  onDelete: id => dispatch(contactActions.deleteContact(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+
+// ? // note 28. dispatch onDelete
+// - import {connect}
+// - const mapStateToProps
+// -- наш список ожидает проп ContactList({ contacts })
+// --- в mapStateToProps пишем свойство 'contacts: state.contacts', (значение проверяем в redux (где лежит наш массив?))
+// - import action
+// - const mapDispatchToProp
+// -- в mapDispatchToProp мы можем прописать болванку onDelete: () => null,
+// --- onDelete должен принимать (id)
+// --- onDelete: id => dispatch(contactActions.deleteContact(id)),
+// - проверяем в redux
+
+// ? // note 32. getVisibleContacts
+// - делать фильтрацию нужно тут, где список
+// - рефакторим код
